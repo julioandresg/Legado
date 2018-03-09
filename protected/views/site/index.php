@@ -7,6 +7,22 @@ $this->pageTitle=Yii::app()->name;
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <p>Congratulations! You have successfully created your Yii application.</p>
+<center>
+<div>
+<?php
+$this->widget('ext.slider.slider', array(
+    'container' => 'slideshow',
+    'width' => 800,
+    'height' => 500,
+    'timeout' => 3000,
+    'constrainImage' => true,
+    'images' => array('1.jpg', '2.jpg', '3.jpg', '4.jpg'),
+    'alts' => array('Criptido en Legado Fest 2018', 'Nosferatu en Legado Fest 2018', 'Amatista en Legado Fest 2018', 'Coludidos en Legado Fest 2018'),
+        )
+);
+?></div>
+	
+</center>
 
 <p>You may change the content of this page by modifying the following two files:</p>
 <ul>
