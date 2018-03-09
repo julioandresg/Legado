@@ -34,7 +34,7 @@
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label' => 'Musico', 'url' => array(Yii::app()->baseUrl.'/#'), 'visible' => !Yii::app()->user->isGuest,
                             'items' => array(
-                                array('label' => 'Ingresar', 'url' => array('/musico/create'), 'visible' => !Yii::app()->user->isGuest,),
+                                array('label' => 'Ingresar Musico', 'url' => array('/musico/create'), 'visible' => !Yii::app()->user->isGuest,),
                             )
                         ),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
