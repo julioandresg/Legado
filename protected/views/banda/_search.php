@@ -22,6 +22,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'logo'); ?>
+		<?php echo $form->textField($model,'logo'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'representante'); ?>
 		<?php echo $form->textField($model,'representante',array('size'=>50,'maxlength'=>50)); ?>
 	</div>

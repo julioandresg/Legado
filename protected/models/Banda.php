@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'banda':
  * @property integer $id_banda
  * @property string $nombre
+ * @property string $logo
  * @property string $representante
  * @property integer $telefono
  * @property string $correo
@@ -43,18 +44,20 @@ class Banda extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, representante, telefono, correo, genero, website, fanpage, instagram, youtube, eventos, historia, spotify, itunes, soundcloud', 'required'),
-			array('telefono', 'numerical', 'integerOnly'=>true),
+			array('nombre, representante, telefono, genero', 'required'),
+			array('telefono','numerical', 'integerOnly' => true,'min'=>200000000,'max'=>999999999),
+			array('telefono','length','max'=>9),
+			array('correo','email'),
 			array('nombre', 'length', 'max'=>30),
 			array('representante, correo, genero', 'length', 'max'=>50),
 			array('website, instagram, youtube', 'length', 'max'=>200),
-			array('fanpage', 'length', 'max'=>2100),
+			array('fanpage', 'length', 'max'=>200),
 			array('eventos', 'length', 'max'=>500),
 			array('historia', 'length', 'max'=>1000),
 			array('spotify, itunes, soundcloud', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_banda, nombre, representante, telefono, correo, genero, website, fanpage, instagram, youtube, eventos, historia, spotify, itunes, soundcloud', 'safe', 'on'=>'search'),
+			array('id_banda, nombre, logo, representante, telefono, correo, genero, website, fanpage, instagram, youtube, eventos, historia, spotify, itunes, soundcloud', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -80,6 +83,7 @@ class Banda extends CActiveRecord
 		return array(
 			'id_banda' => 'Id Banda',
 			'nombre' => 'Nombre',
+			'logo' => 'Logo',
 			'representante' => 'Representante',
 			'telefono' => 'Telefono',
 			'correo' => 'Correo',
@@ -116,6 +120,7 @@ class Banda extends CActiveRecord
 
 		$criteria->compare('id_banda',$this->id_banda);
 		$criteria->compare('nombre',$this->nombre,true);
+		$criteria->compare('logo',$this->logo,true);
 		$criteria->compare('representante',$this->representante,true);
 		$criteria->compare('telefono',$this->telefono);
 		$criteria->compare('correo',$this->correo,true);

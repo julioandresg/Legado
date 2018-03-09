@@ -32,9 +32,14 @@
 				array('label'=>'Inicio', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label' => 'Musico', 'url' => array(Yii::app()->baseUrl.'/#'), 'visible' => !Yii::app()->user->isGuest,
+				array('label' => 'Musico', 'url' => array('/#'), 'visible' => !Yii::app()->user->isGuest,
                             'items' => array(
                                 array('label' => 'Ingresar', 'url' => array('/musico/create'), 'visible' => !Yii::app()->user->isGuest,),
+                            )
+                        ),
+				array('label' => 'Bandas', 'url' => array('/#'), 'visible' => !Yii::app()->user->isGuest,
+                            'items' => array(
+                                array('label' => 'Ingresar', 'url' => array('/banda/create'), 'visible' => !Yii::app()->user->isGuest,),
                             )
                         ),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

@@ -18,7 +18,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 	),
-	/*
+	
 	'modules'=>array(
 		
 		'gii'=>array(
@@ -28,7 +28,7 @@ return array(
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
 	),
-	*/
+	
 	// application components
 	'components'=>array(
 		'booster' => array(

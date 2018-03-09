@@ -13,6 +13,10 @@
 	<?php echo CHtml::encode($data->nombre); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('logo')); ?>:</b>
+	<?php echo CHtml::encode($data->logo); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('representante')); ?>:</b>
 	<?php echo CHtml::encode($data->representante); ?>
 	<br />
@@ -29,11 +33,11 @@
 	<?php echo CHtml::encode($data->genero); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('website')); ?>:</b>
 	<?php echo CHtml::encode($data->website); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('fanpage')); ?>:</b>
 	<?php echo CHtml::encode($data->fanpage); ?>
 	<br />

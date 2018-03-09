@@ -23,6 +23,7 @@ $this->menu=array(
 	'attributes'=>array(
 		'id_banda',
 		'nombre',
+		'logo',
 		'representante',
 		'telefono',
 		'correo',
