@@ -70,8 +70,14 @@ class MusicoController extends Controller
 		if(isset($_POST['Musico']))
 		{
 			$model->attributes=$_POST['Musico'];
-			if($model->save())
+			$model->fecha_nacimiento = date('Y-m-d' ,strtotime($model->fecha_nacimiento));
+			$uploadedFile = CUploadedFile::getInstance($model, 'imagen');
+            $fileName = "$model->nombre"+" "+"$model->apellido_paterno"+" "+"$model->apellido_materno";  
+            $model->imagen = $fileName;
+			if($model->save()){
+				$uploadedFile->saveAs(Yii::app()->basePath . '/../imagenes/musico/'.$fileName.'.jpg');
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -84,25 +90,28 @@ class MusicoController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
+	public function actionUpdate($id) {
+        $model = $this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
 
-		if(isset($_POST['Musico']))
-		{
-			$model->attributes=$_POST['Musico'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+        if (isset($_POST['Musico'])) {
+            $model->attributes = $_POST['Musico'];
+            $model->imagen = CUploadedFile::getInstance($model, 'imagen');
+            if ((is_object($model->imagen) && get_class($model->imagen) === 'CUploadedFile')) {
+                $model->imagen->saveAs(Yii::app()->basePath . '/../images/musico/'. $fileName.'.jpg');
+                $model->imagen = $fileName.'.jpg';
+            }
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
+            if ($model->save())
+                $this->redirect(array('view', 'id' => $model->id));
+        }
 
+        $this->render('update', array(
+            'model' => $model,
+        ));
+    }
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
