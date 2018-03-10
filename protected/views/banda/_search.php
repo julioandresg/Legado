@@ -11,24 +11,24 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
+	<!--<div class="row">
 		<?php echo $form->label($model,'id_banda'); ?>
 		<?php echo $form->textField($model,'id_banda'); ?>
-	</div>
+	</div>-->
 
 	<div class="row">
 		<?php echo $form->label($model,'nombre'); ?>
 		<?php echo $form->textField($model,'nombre',array('size'=>30,'maxlength'=>30)); ?>
 	</div>
 
-	<div class="row">
+	<!--<div class="row">
 		<?php echo $form->label($model,'logo'); ?>
 		<?php echo $form->textField($model,'logo'); ?>
-	</div>
+	</div>-->
 
 	<div class="row">
 		<?php echo $form->label($model,'representante'); ?>
-		<?php echo $form->textField($model,'representante',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->dropDownList($model, 'representante', CHtml::listData(Musico::model()->findAll(), 'id','nombre')); ?>
 	</div>
 
 	<div class="row">
@@ -66,7 +66,7 @@
 		<?php echo $form->textField($model,'youtube',array('size'=>60,'maxlength'=>200)); ?>
 	</div>
 
-	<div class="row">
+	<!--<div class="row">
 		<?php echo $form->label($model,'eventos'); ?>
 		<?php echo $form->textField($model,'eventos',array('size'=>60,'maxlength'=>500)); ?>
 	</div>
@@ -74,7 +74,7 @@
 	<div class="row">
 		<?php echo $form->label($model,'historia'); ?>
 		<?php echo $form->textField($model,'historia',array('size'=>60,'maxlength'=>1000)); ?>
-	</div>
+	</div>-->
 
 	<div class="row">
 		<?php echo $form->label($model,'spotify'); ?>
@@ -92,7 +92,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
+		<?php echo CHtml::submitButton('Buscar'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

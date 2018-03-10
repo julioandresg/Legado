@@ -3,22 +3,22 @@
 /* @var $data Banda */
 ?>
 
-<div class="view">
+<div class="view" onclick="window.location='/legado/index.php?r=banda/view&id=<?php echo $data->id_banda ?>'">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id_banda')); ?>:</b>
+	<!--<b><?php echo CHtml::encode($data->getAttributeLabel('id_banda')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->id_banda), array('view', 'id'=>$data->id_banda)); ?>
-	<br />
+	<br />-->
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('nombre')); ?>:</b>
 	<?php echo CHtml::encode($data->nombre); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('logo')); ?>:</b>
+	<!--<b><?php echo CHtml::encode($data->getAttributeLabel('logo')); ?>:</b>
 	<?php echo CHtml::encode($data->logo); ?>
-	<br />
+	<br />-->
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('representante')); ?>:</b>
-	<?php echo CHtml::encode($data->representante); ?>
+	<?php echo Musico::model()->find('id='.$data->representante)->nombre ?><b> </b><?php echo Musico::model()->find('id='.$data->representante)->apellido_paterno ?><?php echo Musico::model()->find('id='.$data->representante)->apellido_materno ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('telefono')); ?>:</b>

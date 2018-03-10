@@ -46,6 +46,7 @@ class Musico extends CActiveRecord
 			array('nombre', 'length', 'max'=>25),
 			array('apellido_paterno, apellido_materno, user', 'length', 'max'=>15),
 			array('run', 'length', 'max' => 12),
+			array('imagen','file','types'=>'jpg'),
             array('run','unique','message'=>'Musico ya ha sido ingresado al sistema'),
 			array('correo', 'email'),
 			array('pass','compare','compareAttribute'=>'pass2','operator'=>'=','message'=>  Yii::t('es', 'Las Contraseñas deben ser iguales.')),

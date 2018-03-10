@@ -32,14 +32,15 @@
 				array('label'=>'Inicio', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label' => 'Musico', 'url' => array('/#'), 'visible' => !Yii::app()->user->isGuest,
+				array('label' => 'Musicos', 'url' => array('musico/index'), 'visible' => Yii::app()->user->isGuest),
+				array('label' => 'Bandas', 'url' => array('banda/index'), 'visible' => Yii::app()->user->isGuest),
+
+				array('label' => 'Administracion', 'url' => array('/#'), 'visible' => !Yii::app()->user->isGuest,
                             'items' => array(
-                                array('label' => 'Ingresar', 'url' => array('/musico/create'), 'visible' => !Yii::app()->user->isGuest,),
-                            )
-                        ),
-				array('label' => 'Bandas', 'url' => array('/#'), 'visible' => !Yii::app()->user->isGuest,
-                            'items' => array(
-                                array('label' => 'Ingresar', 'url' => array('/banda/create'), 'visible' => !Yii::app()->user->isGuest,),
+                                array('label' => 'Registrar Bandas', 'url' => array('/banda/create'), 'visible' => !Yii::app()->user->isGuest,),
+                                array('label' => 'Administrar Bandas', 'url' => array('/banda/admin'), 'visible' => !Yii::app()->user->isGuest,),
+                                array('label' => 'Registrar Musicos', 'url' => array('/musico/create'), 'visible' => !Yii::app()->user->isGuest,),
+                                array('label' => 'Administrar Musicos', 'url' => array('/musico/admin'), 'visible' => !Yii::app()->user->isGuest,),
                             )
                         ),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

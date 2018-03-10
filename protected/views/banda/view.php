@@ -2,7 +2,7 @@
 /* @var $this BandaController */
 /* @var $model Banda */
 
-$this->breadcrumbs=array(
+/*$this->breadcrumbs=array(
 	'Bandas'=>array('index'),
 	$model->id_banda,
 );
@@ -13,18 +13,30 @@ $this->menu=array(
 	array('label'=>'Update Banda', 'url'=>array('update', 'id'=>$model->id_banda)),
 	array('label'=>'Delete Banda', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_banda),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Banda', 'url'=>array('admin')),
-);
+);*/
 ?>
 
-<h1>View Banda #<?php echo $model->id_banda; ?></h1>
+<h1>Banda <?php echo $model->nombre; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id_banda',
-		'nombre',
-		'logo',
-		'representante',
+		//'id_banda',
+		//'nombre',
+		array(
+                'label'=>'',
+                'type'=>'raw',
+                'value'=>html_entity_decode(
+                        CHtml::image(Yii::app()->baseUrl."/imagenes/banda/".$model->nombre.'.jpg','alt',array('width'=>300,'height'=>300))),
+            ),
+		array(
+                    'name'=>'representante',
+                    'value'=>function($model){
+                        $tipo=  Musico::model()->find('id='.$model->representante);
+
+                        return $tipo->nombre.' '.$tipo->apellido_paterno.' '.$tipo->apellido_materno;
+                    }
+                ),
 		'telefono',
 		'correo',
 		'genero',

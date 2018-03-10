@@ -16,7 +16,7 @@
 	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Campos con <span class="required">*</span> son obligatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 	<div class="col-md-12">
@@ -35,7 +35,7 @@
 
 			<div class="row">
 				<?php echo $form->labelEx($model,'representante'); ?>
-				<?php echo $form->textField($model,'representante',array('size'=>30,'maxlength'=>50)); ?>
+				<?php echo $form->dropDownList($model, 'representante', CHtml::listData(Musico::model()->findAll(), 'id','nombre')); ?>
 				<?php echo $form->error($model,'representante'); ?>
 			</div>
 
@@ -116,9 +116,11 @@
 
 		</div>
 		</div>
+		<center>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
 	</div>
+	</center>
 
 <?php $this->endWidget(); ?>
 

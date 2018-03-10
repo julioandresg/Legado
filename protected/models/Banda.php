@@ -45,9 +45,11 @@ class Banda extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nombre, representante, telefono, genero', 'required'),
+			array('nombre','unique', 'message'=>'nombre de banda ya ha sido registrado'),
 			array('telefono','numerical', 'integerOnly' => true,'min'=>200000000,'max'=>999999999),
 			array('telefono','length','max'=>9),
 			array('correo','email'),
+			array('logo','file','types'=>'jpg'),
 			array('nombre', 'length', 'max'=>30),
 			array('representante, correo, genero', 'length', 'max'=>50),
 			array('website, instagram, youtube', 'length', 'max'=>200),

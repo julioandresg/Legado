@@ -1,7 +1,7 @@
 <?php
 /* @var $this BandaController */
 /* @var $model Banda */
-
+/*
 $this->breadcrumbs=array(
 	'Bandas'=>array('index'),
 	'Manage',
@@ -11,7 +11,7 @@ $this->menu=array(
 	array('label'=>'List Banda', 'url'=>array('index')),
 	array('label'=>'Create Banda', 'url'=>array('create')),
 );
-
+*/
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -24,16 +24,18 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+$j = 0;
+$musicos= [];
+foreach (Musico::model()->findAll() as $musico) {
+    $musicos[$j] = ['id2' => $musico->id, 'datos2' => $musico->nombre ];
+    $j++;
+}
 ?>
 
-<h1>Manage Bandas</h1>
+<h1>Buscador de Bandas</h1>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<?php echo CHtml::link('Busqueda Avanzada','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -45,10 +47,16 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id_banda',
+		//'id_banda',
 		'nombre',
-		'logo',
-		'representante',
+		//'logo',
+		array(
+                    'name'=>'representante',
+                    'value'=>function($model){
+                        $tipo=  Musico::model()->find('id='.$model->representante);
+
+                        return $tipo->nombre.' '.$tipo->apellido_paterno.' '.$tipo->apellido_materno;
+                    },'filter'=>CHtml::listData($musicos,'id2','datos2')),
 		'telefono',
 		'correo',
 		/*
