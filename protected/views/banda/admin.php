@@ -24,12 +24,12 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
-$j = 0;
+/*$j = 0;
 $musicos= [];
 foreach (Musico::model()->findAll() as $musico) {
     $musicos[$j] = ['id2' => $musico->id, 'datos2' => $musico->nombre ];
     $j++;
-}
+}*/
 ?>
 
 <h1>Buscador de Bandas</h1>
@@ -50,13 +50,14 @@ foreach (Musico::model()->findAll() as $musico) {
 		//'id_banda',
 		'nombre',
 		//'logo',
-		array(
+		'representante',
+		/*array(
                     'name'=>'representante',
                     'value'=>function($model){
                         $tipo=  Musico::model()->find('id='.$model->representante);
 
-                        return $tipo->nombre.' '.$tipo->apellido_paterno.' '.$tipo->apellido_materno;
-                    },'filter'=>CHtml::listData($musicos,'id2','datos2')),
+                        return $tipo->nombre;
+                    },),*/
 		'telefono',
 		'correo',
 		/*

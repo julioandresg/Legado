@@ -21,22 +21,16 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		//'id_banda',
-		//'nombre',
 		array(
                 'label'=>'',
                 'type'=>'raw',
                 'value'=>html_entity_decode(
                         CHtml::image(Yii::app()->baseUrl."/imagenes/banda/".$model->nombre.'.jpg','alt',array('width'=>300,'height'=>300))),
             ),
-		array(
-                    'name'=>'representante',
-                    'value'=>function($model){
-                        $tipo=  Musico::model()->find('id='.$model->representante);
-
-                        return $tipo->nombre.' '.$tipo->apellido_paterno.' '.$tipo->apellido_materno;
-                    }
-                ),
+		//'id_banda',
+		//'nombre',
+		//'logo',
+		'representante',
 		'telefono',
 		'correo',
 		'genero',

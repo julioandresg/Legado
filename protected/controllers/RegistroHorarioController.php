@@ -62,16 +62,16 @@ class RegistroHorarioController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Horario;
+		$model=new RegistroHorario;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Horario']))
+		if(isset($_POST['RegistroHorario']))
 		{
-			$model->attributes=$_POST['Horario'];
+			$model->attributes=$_POST['RegistroHorario'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_horario));
+				$this->redirect(array('view','id'=>$model->id_r_h));
 		}
 
 		$this->render('create',array(
@@ -91,11 +91,11 @@ class RegistroHorarioController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Horario']))
+		if(isset($_POST['RegistroHorario']))
 		{
-			$model->attributes=$_POST['Horario'];
+			$model->attributes=$_POST['RegistroHorario'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_horario));
+				$this->redirect(array('view','id'=>$model->id_r_h));
 		}
 
 		$this->render('update',array(
@@ -122,7 +122,7 @@ class RegistroHorarioController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Horario');
+		$dataProvider=new CActiveDataProvider('RegistroHorario');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -133,10 +133,10 @@ class RegistroHorarioController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Horario('search');
+		$model=new RegistroHorario('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Horario']))
-			$model->attributes=$_GET['Horario'];
+		if(isset($_GET['RegistroHorario']))
+			$model->attributes=$_GET['RegistroHorario'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -147,12 +147,12 @@ class RegistroHorarioController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Horario the loaded model
+	 * @return RegistroHorario the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Horario::model()->findByPk($id);
+		$model=RegistroHorario::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -160,11 +160,11 @@ class RegistroHorarioController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Horario $model the model to be validated
+	 * @param RegistroHorario $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='horario-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='registro-horario-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

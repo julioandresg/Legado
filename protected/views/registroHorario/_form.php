@@ -1,13 +1,13 @@
 <?php
 /* @var $this RegistroHorarioController */
-/* @var $model Horario */
+/* @var $model RegistroHorario */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'horario-form',
+	'id'=>'registro-horario-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -26,21 +26,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'hora_inicio'); ?>
-		<?php echo $form->textField($model,'hora_inicio',array('size'=>5,'maxlength'=>5)); ?>
-		<?php echo $form->error($model,'hora_inicio'); ?>
+		<?php echo $form->labelEx($model,'id_horario'); ?>
+		<?php echo $form->textField($model,'id_horario'); ?>
+		<?php echo $form->error($model,'id_horario'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'hora_fin'); ?>
-		<?php echo $form->textField($model,'hora_fin',array('size'=>5,'maxlength'=>5)); ?>
-		<?php echo $form->error($model,'hora_fin'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'dia'); ?>
-		<?php echo $form->textField($model,'dia',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'dia'); ?>
+		<?php echo $form->labelEx($model,'fecha'); ?>
+		<?php echo $form->textField($model,'fecha'); ?>
+		<?php echo $form->error($model,'fecha'); ?>
 	</div>
 
 	<div class="row buttons">

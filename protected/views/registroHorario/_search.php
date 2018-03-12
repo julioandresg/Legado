@@ -1,6 +1,6 @@
 <?php
 /* @var $this RegistroHorarioController */
-/* @var $model Horario */
+/* @var $model RegistroHorario */
 /* @var $form CActiveForm */
 ?>
 
@@ -12,8 +12,8 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'id_horario'); ?>
-		<?php echo $form->textField($model,'id_horario'); ?>
+		<?php echo $form->label($model,'id_r_h'); ?>
+		<?php echo $form->textField($model,'id_r_h'); ?>
 	</div>
 
 	<div class="row">
@@ -22,18 +22,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'hora_inicio'); ?>
-		<?php echo $form->textField($model,'hora_inicio',array('size'=>5,'maxlength'=>5)); ?>
+		<?php echo $form->label($model,'id_horario'); ?>
+		<?php echo $form->textField($model,'id_horario'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'hora_fin'); ?>
-		<?php echo $form->textField($model,'hora_fin',array('size'=>5,'maxlength'=>5)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'dia'); ?>
-		<?php echo $form->textField($model,'dia',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->label($model,'fecha'); ?>
+		<?php echo $form->textField($model,'fecha'); ?>
 	</div>
 
 	<div class="row buttons">

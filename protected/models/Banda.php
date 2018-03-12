@@ -44,16 +44,11 @@ class Banda extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, representante, telefono, genero', 'required'),
-			array('nombre','unique', 'message'=>'nombre de banda ya ha sido registrado'),
-			array('telefono','numerical', 'integerOnly' => true,'min'=>200000000,'max'=>999999999),
-			array('telefono','length','max'=>9),
-			array('correo','email'),
-			array('logo','file','types'=>'jpg'),
+			array('nombre, logo, representante, telefono, correo, genero, website, fanpage, instagram, youtube, eventos, historia, spotify, itunes, soundcloud', 'required'),
+			array('telefono', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>30),
 			array('representante, correo, genero', 'length', 'max'=>50),
-			array('website, instagram, youtube', 'length', 'max'=>200),
-			array('fanpage', 'length', 'max'=>200),
+			array('website, fanpage, instagram, youtube', 'length', 'max'=>200),
 			array('eventos', 'length', 'max'=>500),
 			array('historia', 'length', 'max'=>1000),
 			array('spotify, itunes, soundcloud', 'length', 'max'=>100),
@@ -152,5 +147,4 @@ class Banda extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-
 }

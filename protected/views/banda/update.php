@@ -16,6 +16,6 @@ $this->menu=array(
 );*/
 ?>
 
-<h1>Actualizar Datos de Banda <?php echo $model->nombre; ?></h1>
+<h1>Actualizar Banda <?php echo $model->nombre; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

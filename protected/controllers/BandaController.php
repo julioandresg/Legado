@@ -27,12 +27,18 @@ class BandaController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow', 'actions'=>array('index'),'users'=>array('*'),),
-			array('allow', 'actions'=>array('view'),'users'=>array('*'),),
-			array('allow', 'actions'=>array('create'),'users'=>array('@'),),
-			array('allow', 'actions'=>array('update'),'users'=>array('@'),),
-			array('allow', 'actions'=>array('admin'),'users'=>array('*'),),
-			array('allow', 'actions'=>array('delete'),'users'=>array('legado'),),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
+			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -57,24 +63,20 @@ class BandaController extends Controller
 	public function actionCreate()
 	{
 		$model=new Banda;
-	if (isset($_POST['Banda'])) {
 
-            $model->attributes = $_POST['Banda'];
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
 
-            $uploadedFile = CUploadedFile::getInstance($model, 'logo');
-            $fileName = "$model->nombre";  
-            $model->logo = $fileName;
+		if(isset($_POST['Banda']))
+		{
+			$model->attributes=$_POST['Banda'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id_banda));
+		}
 
-            if ($model->save()) {
-                   
-                $uploadedFile->saveAs(Yii::app()->basePath . '/../imagenes/banda/'.$fileName.'.jpg');
-                $this->redirect(array('view', 'id' => $model->id_banda));
-            }
-        }
-
-        $this->render('create', array(
-            'model' => $model,
-        ));
+		$this->render('create',array(
+			'model'=>$model,
+		));
 	}
 
 	/**
@@ -85,21 +87,20 @@ class BandaController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-	if (isset($_POST['Banda'])) {
-            $model->attributes = $_POST['Banda'];
-            $model->logo = CUploadedFile::getInstance($model, 'logo');
-            if ((is_object($model->logo) && get_class($model->logo) === 'CUploadedFile')) {
-                $model->logo->saveAs(Yii::app()->basePath . '/../imagenes/banda/'. $model->nombre.'.jpg');
-                $model->logo = $model->nombre.'.jpg';
-            }
 
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id_banda));
-        }
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
 
-        $this->render('update', array(
-            'model' => $model,
-        ));
+		if(isset($_POST['Banda']))
+		{
+			$model->attributes=$_POST['Banda'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id_banda));
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+		));
 	}
 
 	/**

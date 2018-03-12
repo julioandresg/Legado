@@ -18,7 +18,7 @@
 	<br />-->
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('representante')); ?>:</b>
-	<?php echo Musico::model()->find('id='.$data->representante)->nombre ?><b> </b><?php echo Musico::model()->find('id='.$data->representante)->apellido_paterno ?><?php echo Musico::model()->find('id='.$data->representante)->apellido_materno ?>
+	<?php echo CHtml::encode($data->representante); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('telefono')); ?>:</b>

@@ -32,8 +32,8 @@
 				array('label'=>'Inicio', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label' => 'Musicos', 'url' => array('musico/index'), 'visible' => Yii::app()->user->isGuest),
-				array('label' => 'Bandas', 'url' => array('banda/index'), 'visible' => Yii::app()->user->isGuest),
+				array('label' => 'Musicos', 'url' => array('musico/index'), 'visible' => !Yii::app()->user->isGuest),
+				array('label' => 'Bandas', 'url' => array('banda/index'), 'visible' => !Yii::app()->user->isGuest),
 
 				array('label' => 'Administracion', 'url' => array('/#'), 'visible' => !Yii::app()->user->isGuest,
                             'items' => array(

@@ -3,16 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Horarios',
+	'Registro Horarios',
 );
 
 $this->menu=array(
-	array('label'=>'Create Horario', 'url'=>array('create')),
-	array('label'=>'Manage Horario', 'url'=>array('admin')),
+	array('label'=>'Create RegistroHorario', 'url'=>array('create')),
+	array('label'=>'Manage RegistroHorario', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Horarios</h1>
+<h1>Registro Horarios</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

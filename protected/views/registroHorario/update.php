@@ -1,21 +1,21 @@
 <?php
 /* @var $this RegistroHorarioController */
-/* @var $model Horario */
+/* @var $model RegistroHorario */
 
 $this->breadcrumbs=array(
-	'Horarios'=>array('index'),
-	$model->id_horario=>array('view','id'=>$model->id_horario),
+	'Registro Horarios'=>array('index'),
+	$model->id_r_h=>array('view','id'=>$model->id_r_h),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Horario', 'url'=>array('index')),
-	array('label'=>'Create Horario', 'url'=>array('create')),
-	array('label'=>'View Horario', 'url'=>array('view', 'id'=>$model->id_horario)),
-	array('label'=>'Manage Horario', 'url'=>array('admin')),
+	array('label'=>'List RegistroHorario', 'url'=>array('index')),
+	array('label'=>'Create RegistroHorario', 'url'=>array('create')),
+	array('label'=>'View RegistroHorario', 'url'=>array('view', 'id'=>$model->id_r_h)),
+	array('label'=>'Manage RegistroHorario', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Horario <?php echo $model->id_horario; ?></h1>
+<h1>Update RegistroHorario <?php echo $model->id_r_h; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
