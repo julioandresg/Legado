@@ -152,4 +152,5 @@ class Banda extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
 }

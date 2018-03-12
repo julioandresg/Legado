@@ -35,7 +35,7 @@
 
 			<div class="row">
 				<?php echo $form->labelEx($model,'representante'); ?>
-				<?php echo $form->dropDownList($model, 'representante', CHtml::listData(Musico::model()->findAll(), 'id','nombre')); ?>
+				<?php echo $form->dropDownList($model, 'representante', CHtml::listData(Musico::model()->findAll(), 'id','concatened')); ?>
 				<?php echo $form->error($model,'representante'); ?>
 			</div>
 
@@ -53,7 +53,7 @@
 
 			<div class="row">
 				<?php echo $form->labelEx($model,'genero'); ?>
-				<?php echo $form->textField($model,'genero',array('size'=>50,'maxlength'=>50)); ?>
+				<?php echo $form->dropDownList($model,'genero', array('GROOVE METAL'=>"GROOVE METAL",'INDIE-LATINOAMERICANO'=>"INDIE-LATINOAMERICANO",'ROCK'=>"ROCK",'ROCK ALTERNATIVO'=>"ROCK ALTERNATIVO",'ROCK-POP'=>"ROCK-POP",'ROCK PROGRESIVO MELODICO'=>"ROCK PROGRESIVO MELODICO",'ROCK & ROLL'=>"ROCK & ROLL",'TROPICAL'=>"TROPICAL")); ?>
 				<?php echo $form->error($model,'genero'); ?>
 			</div>
 

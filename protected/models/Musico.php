@@ -40,19 +40,13 @@ class Musico extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, apellido_paterno, apellido_materno, fecha_nacimiento, run, telefono, correo, especialidad1, especialidad2, user, pass, pass2', 'required'),
-			array('telefono','numerical', 'integerOnly' => true,'min'=>200000000,'max'=>999999999),
-			array('telefono','length','max'=>9),
+			array('nombre, apellido_paterno, apellido_materno, fecha_nacimiento, run, imagen, telefono, correo, especialidad1, especialidad2, user, pass, pass2', 'required'),
+			array('telefono', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>25),
 			array('apellido_paterno, apellido_materno, user', 'length', 'max'=>15),
-			array('run', 'length', 'max' => 12),
-			array('imagen','file','types'=>'jpg'),
-            array('run','unique','message'=>'Musico ya ha sido ingresado al sistema'),
-			array('correo', 'email'),
-			array('pass','compare','compareAttribute'=>'pass2','operator'=>'=','message'=>  Yii::t('es', 'Las Contraseñas deben ser iguales.')),
-			array('especialidad1, especialidad2', 'length', 'max'=>20),
-			array('pass, pass2', 'length', 'max'=>20, 'min'=>6),
-            array('user','unique','message'=>'Usuario no disponible, por favor ingrese uno nuevo.'),
+			array('run', 'length', 'max'=>12),
+			array('correo', 'length', 'max'=>30),
+			array('especialidad1, especialidad2, pass, pass2', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, run, imagen, telefono, correo, especialidad1, especialidad2, user, pass, pass2', 'safe', 'on'=>'search'),
@@ -71,7 +65,6 @@ class Musico extends CActiveRecord
 		);
 	}
 
-
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -82,16 +75,16 @@ class Musico extends CActiveRecord
 			'nombre' => 'Nombre',
 			'apellido_paterno' => 'Apellido Paterno',
 			'apellido_materno' => 'Apellido Materno',
-			'fecha_nacimiento' => 'Fecha de Nacimiento',
+			'fecha_nacimiento' => 'Fecha Nacimiento',
 			'run' => 'Run',
-			'imagen' => 'Imagen de Perfil',
+			'imagen' => 'Imagen',
 			'telefono' => 'Telefono',
 			'correo' => 'Correo',
 			'especialidad1' => 'Especialidad1',
 			'especialidad2' => 'Especialidad2',
-			'user' => 'Usuario',
-			'pass' => 'Contraseña',
-			'pass2' => 'Repita su contraseña',
+			'user' => 'User',
+			'pass' => 'Pass',
+			'pass2' => 'Pass2',
 		);
 	}
 
@@ -132,26 +125,6 @@ class Musico extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	public function validateRut($attribute, $params) {
-        $data = explode('-', $this->run);
-        $evaluate = strrev($data[0]);
-        $multiply = 2;
-        $store = 0;
-        for ($i = 0; $i < strlen($evaluate); $i++) {
-            $store += $evaluate[$i] * $multiply;
-            $multiply++;
-            if ($multiply > 7)
-                $multiply = 2;
-        }
-        isset($data[1]) ? $verifyCode = strtolower($data[1]) : $verifyCode = '';
-        $result = 11 - ($store % 11);
-        if ($result == 10)
-            $result = 'k';
-        if ($result == 11)
-            $result = 0;
-        if ($verifyCode != $result)
-            $this->addError('rut', 'Run inválido.');
-    }
 
 	/**
 	 * Returns the static model of the specified AR class.
